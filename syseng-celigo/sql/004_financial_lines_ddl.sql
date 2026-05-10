@@ -1,0 +1,40 @@
+CREATE TABLE `syseng_decoupling_prod.netsuite_fin_transactions_lines` (
+  id STRING OPTIONS (description = "Netsuite Internal id. For Celigo reconciliation"),
+  fivetran_account_id STRING OPTIONS (description = "Fivetran account internal id for NS/Product reconciliation"),
+  reseller_marketplace_fivetran_account_id STRING OPTIONS (description = "Internal id of Reseller or Marketplace"),
+  fivetran_subscription_id STRING OPTIONS (description = "Fivetran subscription id for Product/NS reconciliation"),
+  record_type STRING OPTIONS (description = "Type of record (e.g., 'invoice'). Parked for future use"),
+  last_modified DATETIME OPTIONS (description = "Last modified timestamp (format: MM/DD/YYYY HH:MM am/pm)"),
+  invoice_type STRING OPTIONS (description = "Invoice Type: Prepaid, Self-Service, or Overage"),
+  document_number STRING OPTIONS (description = "Unique transaction reference (e.g., 'INV23098965')"),
+  status STRING OPTIONS (description = "Payment status (e.g., 'Paid In Full', 'Open')"),
+  invoice_date DATE OPTIONS (description = "Document date in Netsuite (format: MM/DD/YYYY)"), -- add to the script
+  due_date DATE OPTIONS (description = "Payment due date (format: MM/DD/YYYY)"),
+  currency STRING OPTIONS (description = "Transaction currency (ISO codes). Parked for future use"),
+  customer_sfdc_account_id STRING OPTIONS (description = "Salesforce Account ID (18-character format)"),
+  ns_line_id STRING OPTIONS (description = "Netsuite line identifier (numeric string)"),
+  sfdc_line_id STRING OPTIONS (description = "Salesforce line identifier"),
+  item STRING OPTIONS (description = "Product/service details"),
+  amt_trxn_currency NUMERIC OPTIONS (description = "Total amount in transaction currency"),
+  amt_remaining_trxn_currency NUMERIC OPTIONS (description = "Outstanding balance"),
+  amt_paid_trxn_currency NUMERIC OPTIONS (description = "Amount paid"),
+  memo STRING OPTIONS (description = "Additional notes/reference"),
+  order_number STRING OPTIONS (description = "Order/account reference (ELA/OLP specific)"),
+  sfdc_order_id STRING OPTIONS (description = "Salesforce Order ID"),
+  created_from STRING OPTIONS (description = "Source document reference"),
+  atl_amount_foreign_currency NUMERIC OPTIONS (description = "Linked foreign currency amount"),
+  att_doc_number STRING OPTIONS (description = "ATT-related document number"),
+  att_type STRING OPTIONS (description = "ATT transaction type"),
+  att_status STRING OPTIONS (description = "ATT-specific status"),
+  att_amt_trxn_currency NUMERIC OPTIONS (description = "ATT-related amount"),
+  att_amt_paid_trxn_currency NUMERIC OPTIONS (description = "ATT-related paid amount"),
+  att_amt_remaining_trxn_currency NUMERIC OPTIONS (description = "ATT-related remaining amount"),
+  data_uri STRING OPTIONS (description = "Direct link to Netsuite transaction"),
+  transaction_number STRING OPTIONS (description = "Unique NS internal transaction reference"),
+  contract_start_date DATE OPTIONS (description = "Contract Start Date"),
+  contract_end_date DATE OPTIONS (description = "Contract End Date"),
+  created_at DATETIME OPTIONS (description = "Timestamp when record was created in the BigQuery table")
+)
+OPTIONS (
+  description = "Detailed lines-level transaction data from Netsuite for Fivetran reconciliation and ATT mappings."
+);

@@ -1,0 +1,33 @@
+# dbt build artifacts
+dbt/**/target/
+dbt/**/.dbt/
+dbt/**/dbt_packages/
+
+# Python virtual environment
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Claude Code local config
+.claude/
+.mcp.json
+
+# Word/Office temp files
+~$*
+
+# Binary docs (keep in Drive, not git)
+*.docx
+
+# Temporary/session files
+*.session.sql
+~$*
+
+# Ad-hoc debug queries
+**/debug/

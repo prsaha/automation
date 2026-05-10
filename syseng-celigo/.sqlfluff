@@ -1,0 +1,30 @@
+[sqlfluff]
+dialect = bigquery
+templater = jinja
+max_line_length = 120
+
+# Rules to disable — aligned with Fivetran SQL conventions
+exclude_rules =
+    # AL02: explicit table alias — we always alias, but don't want to force AS keyword
+    AL02,
+    # ST06: select wildcards — SELECT * is banned in prod but allowed in run_cache_account_sync
+    ST06
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = upper
+
+[sqlfluff:rules:layout.indent]
+indent_unit = space
+tab_space_size = 2
+
+[sqlfluff:templating]
+# Stub out dbt macros for plain SQL linting
+# (source macro used in dbt models — not present in plain SQL)
+[sqlfluff:templating:jinja]
+apply_dbt_builtins = false

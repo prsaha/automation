@@ -1,0 +1,13 @@
+syseng_run_cache_monthly_billing_prod:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: service-account
+      project: private-internal
+      dataset: share_celigo
+      execution_project: internal-analytics-data-access
+      keyfile: /path/to/syseng-decoupling-prod-sa-key.json
+      location: US
+      timeout_seconds: 300
+      threads: 4

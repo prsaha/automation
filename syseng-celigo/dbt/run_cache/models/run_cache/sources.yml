@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: pg_public
+    description: "Production billing database — digital-arbor-400"
+    database: digital-arbor-400
+    schema: pg_public
+    tables:
+      - name: accounts
+        description: "Legacy Fivetran accounts. Carries billing_account_id and stripe_customer_id for Path A (Fivetran product line)."
+      - name: run_cache_accounts
+        description: "Source of truth for RunCache org identity (Phase 1 TDD RD-1160536). Used as allowlist for all RunCache queries."
+      - name: account_billing_info
+        description: "Billing account information including Stripe customer ID. Phase 2: id column will be renamed to billing_info_id."
+
+  - name: staging
+    description: "Staged/transformed tables in private-internal — populated by upstream Java tasks"
+    database: private-internal
+    schema: staging
+    tables:
+      - name: stg_pg_public_revenue_records
+        description: "Staged revenue records. Populated daily by FillRunCacheRevenue task with product_type = 'DBT_RUN_CACHE'."
+
+  - name: netsuite2
+    description: "NetSuite production data synced via Fivetran into private-internal"
+    database: private-internal
+    schema: netsuite2
+    tables:
+      - name: customer
+        description: "NetSuite customer records. Joined on custentity_ft_account_id_sf = billing_account_id."
+      - name: item
+        description: "NetSuite item records. RunCache uses itemid = 'RunCache' (no year suffix)."
+
+  - name: stripe
+    description: "Stripe customer data synced via Fivetran into private-internal"
+    database: private-internal
+    schema: stripe
+    tables:
+      - name: customer
+        description: "Stripe customer records. Metadata carries netsuite_customer_id, billing_profile_id (RunCache), and fivetran_account_id (legacy)."

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="820" viewBox="0 0 1030 820">
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #e3e3e3; stroke-width: 1.2; }
+      .txt { font: 13px Arial, sans-serif; fill: #222; text-anchor: middle; dominant-baseline: middle; }
+      .arrow { stroke: #5f5f5f; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f5f5f"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="40" width="230" height="70" class="box"/>
+  <text x="155" y="75" class="txt">pg_public.subscriptions</text>
+
+  <rect x="360" y="40" width="270" height="70" class="box"/>
+  <text x="495" y="75" class="txt">pg_public.run_cache_accounts</text>
+
+  <rect x="720" y="40" width="270" height="70" class="box"/>
+  <text x="855" y="75" class="txt">pg_public.account_billing_info</text>
+
+  <rect x="360" y="190" width="270" height="95" class="box"/>
+  <text x="495" y="238" class="txt">run_cache_account_sync_v2.sql</text>
+
+  <rect x="390" y="380" width="210" height="70" class="box"/>
+  <text x="495" y="415" class="txt">RunCache customer dataset</text>
+
+  <rect x="390" y="530" width="210" height="70" class="box"/>
+  <text x="495" y="565" class="txt">Celigo customer sync</text>
+
+  <rect x="360" y="680" width="270" height="85" class="box"/>
+  <text x="495" y="715" class="txt">NetSuite customer / billing</text>
+  <text x="495" y="738" class="txt">profile records</text>
+
+  <path d="M 155 110 C 155 155, 270 175, 360 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 495 110 L 495 190" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 855 110 C 855 155, 735 175, 630 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 495 285 L 495 380" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 495 450 L 495 530" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 495 600 L 495 680" class="arrow" marker-end="url(#arrowhead)"/>
+</svg>

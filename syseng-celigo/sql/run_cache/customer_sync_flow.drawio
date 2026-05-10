@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2026-04-07T12:20:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="customer-sync" name="Customer Sync">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" value="pg_public.subscriptions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="230" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="pg_public.run_cache_accounts" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="270" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="pg_public.account_billing_info" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="270" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="run_cache_account_sync_v2.sql" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="270" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="RunCache customer dataset" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="390" y="380" width="210" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="Celigo customer sync" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="390" y="530" width="210" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="NetSuite customer / billing profile records" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e3e3e3;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="680" width="270" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="2" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="3" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="4" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="5" target="6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="6" target="7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=auto;html=1;strokeColor=#5f5f5f;strokeWidth=1.5;endArrow=classic;endFill=1;" edge="1" source="7" target="8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

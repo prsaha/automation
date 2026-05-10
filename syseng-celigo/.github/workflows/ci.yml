@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  guard-staging-refs:
+    name: Guard — no staging refs in production paths
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check dbt/ for staging project refs
+        run: |
+          forbidden_patterns=(
+            "netsuite2_sandbox"
+            "dulcet-yew-246109"
+            "staging_billing_public"
+          )
+          found=0
+          for pattern in "${forbidden_patterns[@]}"; do
+            if grep -r --include="*.sql" --include="*.yml" --include="*.yaml" -l "$pattern" dbt/ sql/run_cache/ 2>/dev/null; then
+              echo "ERROR: Found staging ref '$pattern' in production path"
+              found=1
+            fi
+          done
+          if [ "$found" -ne 0 ]; then
+            exit 1
+          fi
+          echo "No staging refs found in production paths."
+
+  yaml-lint:
+    name: Lint — dbt YAML files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Lint dbt YAML
+        run: |
+          yamllint -d '{extends: default, rules: {line-length: {max: 120}, truthy: disable}}' \
+            dbt/run_cache/dbt_project.yml \
+            dbt/run_cache/models/run_cache/sources.yml
+
+  sql-lint:
+    name: Lint — SQL (SQLFluff, BigQuery)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install sqlfluff
+        run: pip install sqlfluff sqlfluff-templater-dbt
+
+      - name: Lint plain SQL
+        run: |
+          sqlfluff lint sql/run_cache/ --dialect bigquery --config .sqlfluff
+
+      - name: Lint dbt models
+        run: |
+          sqlfluff lint dbt/run_cache/models/ --dialect bigquery --templater dbt --config .sqlfluff
+        env:
+          DBT_PROFILES_DIR: dbt/run_cache
+        continue-on-error: true  # dbt templater needs DB connection for source resolution; treat as advisory
+
+  dbt-parse:
+    name: Validate — dbt parse (syntax only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dbt-bigquery
+        run: pip install dbt-bigquery
+
+      - name: Write CI stub profile
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << 'EOF'
+          syseng_run_cache_monthly_billing_prod:
+            target: ci
+            outputs:
+              ci:
+                type: bigquery
+                method: oauth
+                project: private-internal
+                dataset: share_celigo
+                threads: 1
+                timeout_seconds: 300
+          EOF
+
+      - name: dbt parse
+        working-directory: dbt/run_cache
+        run: dbt parse --profiles-dir ~/.dbt
+        env:
+          # No real credentials — parse does not execute queries
+          GOOGLE_APPLICATION_CREDENTIALS: ""

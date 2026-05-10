@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="820" viewBox="0 0 1450 820">
+  <defs>
+    <style>
+      .box { fill: #fff; stroke: #e3e3e3; stroke-width: 1.2; }
+      .txt { font: 13px Arial, sans-serif; fill: #222; text-anchor: middle; dominant-baseline: middle; }
+      .arrow { stroke: #5f5f5f; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f5f5f"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="40" width="250" height="70" class="box"/>
+  <text x="155" y="75" class="txt">stg_pg_public_revenue_records</text>
+
+  <rect x="330" y="40" width="250" height="70" class="box"/>
+  <text x="455" y="75" class="txt">pg_public.run_cache_accounts</text>
+
+  <rect x="630" y="40" width="250" height="70" class="box"/>
+  <text x="755" y="75" class="txt">pg_public.account_billing_info</text>
+
+  <rect x="930" y="40" width="220" height="70" class="box"/>
+  <text x="1040" y="75" class="txt">netsuite2.customer</text>
+
+  <rect x="1200" y="40" width="180" height="70" class="box"/>
+  <text x="1290" y="75" class="txt">netsuite2.item</text>
+
+  <rect x="560" y="190" width="290" height="95" class="box"/>
+  <text x="705" y="238" class="txt">monthly_run_cache_revenue_v2.sql</text>
+
+  <rect x="590" y="380" width="230" height="70" class="box"/>
+  <text x="705" y="415" class="txt">RunCache billing dataset</text>
+
+  <rect x="590" y="530" width="230" height="70" class="box"/>
+  <text x="705" y="565" class="txt">Celigo billing sync</text>
+
+  <rect x="560" y="680" width="290" height="85" class="box"/>
+  <text x="705" y="715" class="txt">NetSuite invoices / credit memos</text>
+
+  <path d="M 155 110 C 155 155, 390 180, 560 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 455 110 C 455 155, 565 175, 620 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 755 110 L 755 190" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 1040 110 C 1040 155, 895 175, 850 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 1290 110 C 1290 155, 1035 180, 850 225" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 705 285 L 705 380" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 705 450 L 705 530" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 705 600 L 705 680" class="arrow" marker-end="url(#arrowhead)"/>
+</svg>

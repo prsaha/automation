@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"name": "syseng-celigo",
+			"path": "."
+		},
+		{
+			"name": "celigo-netsuite-gcs-worker",
+			"path": "../celigo-netsuite-gcs-worker/internal_systems/celigo-netsuite-gcs-worker"
+		},
+		{
+			"name": "syseng-netsuite-test",
+			"path": "../syseng-netsuite-test"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"ssh": "Disabled",
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5432,
+				"driver": "PostgreSQL",
+				"name": "compliance-db (local)",
+				"database": "compliance_db",
+				"username": "compliance_user"
+			}
+		]
+	}
+}

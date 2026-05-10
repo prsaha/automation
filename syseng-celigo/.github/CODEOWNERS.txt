@@ -1,0 +1,2 @@
+// Require approvals for all files and folders
+* @fivetran-kasipurivasudevarao @fivetran-prabalsaha

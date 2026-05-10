@@ -1,0 +1,20 @@
+name: 'syseng_run_cache_monthly_billing'
+version: '1.0.0'
+config-version: 2
+
+# Profile references ~/.dbt/profiles.yml
+profile: 'syseng_run_cache_monthly_billing_prod'
+
+# Paths relative to this file (dbt/run_cache/)
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+snapshot-paths: ["snapshots"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  syseng_run_cache_monthly_billing:
+    +materialized: view
+
+    run_cache:
+      +materialized: view
